@@ -1,1 +1,25 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chess WASM Demo</title>
+</head>
+<body>
+  <h1>Chess WASM on GitHub Pages</h1>
+  <button id="run">Show FEN</button>
+
+  <script type="module">
+    import init, { Board } from './pkg/chess_lib.js';
+
+    async function run() {
+      await init();
+
+      const board = new Board();
+      const fen = board.to_fen();
+      alert(`Current board FEN:\n${fen}`);
+    }
+
+    document.getElementById('run').onclick = run;
+  </script>
+</body>
+</html>
