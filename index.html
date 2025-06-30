@@ -1,25 +1,29 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Chess WASM Demo</title>
+    <meta charset="utf-8">
+    <title>Chess</title>
+    <style>
+        html,
+        body,
+        canvas {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            background: black;
+            z-index: 0;
+        }
+    </style>
 </head>
+
 <body>
-  <h1>Chess WASM on GitHub Pages</h1>
-  <button id="run">Show FEN</button>
-
-  <script type="module">
-    import init, { Board } from './pkg/chess_lib.js';
-
-    async function run() {
-      await init();
-
-      const board = new Board();
-      const fen = board.to_fen();
-      alert(`Current board FEN:\n${fen}`);
-    }
-
-    document.getElementById('run').onclick = run;
-  </script>
+    <canvas id="glcanvas" tabindex='1'></canvas>
+    <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
+    <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
+    <script>load("gui.wasm");</script> <!-- Your compiled wasm file -->
 </body>
+
 </html>
